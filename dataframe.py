@@ -10,7 +10,7 @@ def main():
     st.title("DataFrame Keyword Search")
 
     # Load the DataFrame
-    df = pd.read_csv("your_dataframe.csv")
+    df = pd.read_excel("동아한겨레1면제목_20130101_20230430.xlsx")
 
     # Display the DataFrame
     st.write("Original DataFrame:")
