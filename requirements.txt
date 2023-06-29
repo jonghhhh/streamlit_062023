@@ -5,3 +5,4 @@ numpy
 openpyxl
 kiwipiepy
 konlpy
+wordcloud
