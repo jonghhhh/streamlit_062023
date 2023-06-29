@@ -34,7 +34,7 @@ def kiwi_tokenize(txt, nouns=True, remove1=False, stopwords=[]):
         token_lst=[] 
     return token_lst
 
-def main(txt):
+def generate_wordcloud(txt):
     token_lst=kiwi_tokenize(txt, nouns=True, remove1=True, stopwords=[])
     keywords_all=Counter(token_lst).most_common(100)
 
@@ -48,6 +48,14 @@ def main(txt):
     plt.imshow(wordcloud, interpolation='bilinear') 
     plt.axis('off') 
     plt.show()
+
+def main():
+    st.title("Word Cloud Generator")
+    st.write("Enter your text below:")
+    text_input = st.text_area("Text", "")
+    
+    if st.button("Generate Word Cloud"):
+        generate_wordcloud(text_input)
 
 if __name__ == "__main__":
     main()
