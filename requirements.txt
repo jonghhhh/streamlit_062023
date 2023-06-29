@@ -1,4 +1,7 @@
 streamlit
 matplotlib
 pandas
+numpy
 openpyxl
+kiwipiepy
+konlpy
