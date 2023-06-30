@@ -1,3 +1,4 @@
+import re 
 from kiwipiepy import Kiwi
 kiwi = Kiwi()
 
