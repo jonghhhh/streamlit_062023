@@ -34,18 +34,18 @@ def kiwi_tokenize(txt, nouns=True, remove1=False, stopwords=[]):
         token_lst=[] 
     return token_lst
 
-def generate_wordcloud(txt):
-    token_lst=kiwi_tokenize(txt, nouns=True, remove1=True, stopwords=[])
-    keywords_all=Counter(token_lst).most_common(100)
+def generate_wordcloud(text):
+    token_list=kiwi_tokenize(text, nouns=True, remove1=True, stopwords=[])
+    keywords_all=Counter(token_list).most_common(100)
 
-    wordcloud = WordCloud(
+    mywordcloud = WordCloud(
         font_path = 'NanumGothic-Regular.ttf',       # 폰트 저장 경로
         background_color='white',                                                       
         colormap = "Accent_r",                                                         # 사용 색상 지정  # https://matplotlib.org/stable/tutorials/colors/colormaps.html
         width=1500, height=1000                                                        # 그림 픽셀
         ).generate_from_frequencies(dict(keywords_all)) 
     plt.figure(figsize=(12,8))                                                         # 그림 크기 
-    plt.imshow(wordcloud, interpolation='bilinear') 
+    plt.imshow(mywordcloud, interpolation='bilinear') 
     plt.axis('off') 
     plt.show()
 
