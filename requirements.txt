@@ -6,3 +6,6 @@ openpyxl
 kiwipiepy
 konlpy
 wordcloud
+bs4
+requests
+urlib
