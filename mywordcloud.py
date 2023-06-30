@@ -58,7 +58,7 @@ def main():
     text_input = st.text_area("Text", "")
     
     if st.button("Generate Word Cloud"):
-        if text:
+        if text_input:
             generate_wordcloud(text_input)
         else:
             st.warning("Please enter some text.")
