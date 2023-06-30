@@ -1,3 +1,5 @@
+import streamlit as st
+
 import re 
 from kiwipiepy import Kiwi
 kiwi = Kiwi()
