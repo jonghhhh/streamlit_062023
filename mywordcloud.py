@@ -47,10 +47,11 @@ def generate_wordcloud(text):
         colormap = "Accent_r",                                                         # 사용 색상 지정  # https://matplotlib.org/stable/tutorials/colors/colormaps.html
         width=1500, height=1000                                                        # 그림 픽셀
         ).generate_from_frequencies(dict(keywords_all)) 
+    fig, ax = plt.subplots()
     plt.figure(figsize=(12,8))                                                         # 그림 크기 
     plt.imshow(mywordcloud, interpolation='bilinear') 
     plt.axis('off') 
-    st.pyplot()
+    st.pyplot(fig)
 
 def main():
     st.title("Word Cloud Generator")
