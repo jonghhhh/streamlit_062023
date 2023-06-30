@@ -50,7 +50,7 @@ def generate_wordcloud(text):
     plt.figure(figsize=(12,8))                                                         # 그림 크기 
     plt.imshow(mywordcloud, interpolation='bilinear') 
     plt.axis('off') 
-    plt.show()
+    st.pyplot()
 
 def main():
     st.title("Word Cloud Generator")
@@ -58,7 +58,11 @@ def main():
     text_input = st.text_area("Text", "")
     
     if st.button("Generate Word Cloud"):
-        generate_wordcloud(text_input)
+        if text:
+            generate_wordcloud(text_input)
+        else:
+            st.warning("Please enter some text.")
+
 
 if __name__ == "__main__":
     main()
