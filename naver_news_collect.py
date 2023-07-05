@@ -6,7 +6,7 @@ import time
 from urllib import parse
 
 def naver_news_search(query, date_from, date_to, to_page):
-    progress_bar = st.progress(0)
+    #progress_bar = st.progress(0)
     query = parse.quote(query)
     target_url = "https://search.naver.com/search.naver?where=news&query={}&sort=0&photo=0&field=0&nso=so:r,p:from{}to{},a:all&start=1".format(query, date_from, date_to) # sort=0: 관련도순, 2: 오래된순
     ## 페이지URL 수집
@@ -23,7 +23,8 @@ def naver_news_search(query, date_from, date_to, to_page):
 
     ## 복수 페이지를 돌면서 기사 수집
     stories_all=[]
-    for i, page_url in enumerate(page_urls): # page_urls[0:5]: 연습으로 처음 5개 페이지까지만 도전. [0:5]를 없애면 전체 페이지를 대상으로 수집.
+    progress_bar = st.progress(0)
+    for i, page_url in enumerate(page_urls): 
         try:
             r=requests.get(page_url)
             soup=BeautifulSoup(r.text, "html.parser")
