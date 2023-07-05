@@ -6,7 +6,6 @@ import time
 from urllib import parse
 
 def naver_news_search(query, date_from, date_to, to_page):
-    #progress_bar = st.progress(0)
     query = parse.quote(query)
     target_url = "https://search.naver.com/search.naver?where=news&query={}&sort=0&photo=0&field=0&nso=so:r,p:from{}to{},a:all&start=1".format(query, date_from, date_to) # sort=0: 관련도순, 2: 오래된순
     ## 페이지URL 수집
@@ -23,7 +22,7 @@ def naver_news_search(query, date_from, date_to, to_page):
 
     ## 복수 페이지를 돌면서 기사 수집
     stories_all=[]
-    progress_bar = st.progress(0)
+    progress_bar = st.progress(0,  text='100페이지까지 수집 진도 표시')
     for i, page_url in enumerate(page_urls): 
         try:
             r=requests.get(page_url)
@@ -48,7 +47,7 @@ def naver_news_search(query, date_from, date_to, to_page):
         except:
             pass
         stories_all.append(stories)
-        progress_bar.progress(i + 1)
+        progress_bar.progress(i + 1,  text='100페이지까지 수집 진도 표시')
     result=sum(stories_all,[])
     results=pd.DataFrame(result, columns=['source', 'title', 'date', 'url', 'n_url', 'text'])
     results['n_url']=results['n_url'].apply(lambda x: x if 'naver' in x else None)
@@ -59,7 +58,7 @@ def main():
     query = st.text_input("검색어 입력:")
     date_from = st.text_input("검색시작일 입력(20230101 형태로):")
     date_to = st.text_input("검색마지막일 입력(20230101 형태로):")
-    to_page = int(float(st.number_input("몇 페이지까지(10, 100, 1000 형태로):", min_value=0, max_value=100000, step=10)))
+    to_page = int(float(st.number_input("몇 페이지까지(100페이지까지 가능):", min_value=0, max_value=100, step=1)))
 
     if st.button("뉴스 검색 시작"):
         result_file=naver_news_search(query, date_from, date_to, to_page)
