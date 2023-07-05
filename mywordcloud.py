@@ -53,11 +53,11 @@ def generate_wordcloud(text):
     st.pyplot(fig)
 
 def main():
-    st.title("Word Cloud Generator")
-    st.write("Enter your text below:")
-    text_input = st.text_area("Text", "")
+    st.title("워드클라우드(Word Cloud) 만들기")
+    st.write("가공할 텍스트를 입력하세요:")
+    text_input = st.text_area("텍스트", "")
     
-    if st.button("Generate Word Cloud"):
+    if st.button("워드클라우드 시작"):
         if text_input:
             generate_wordcloud(text_input)
         else:
