@@ -8,5 +8,4 @@ konlpy
 wordcloud
 bs4
 requests
-PIL
-io
+pillow
