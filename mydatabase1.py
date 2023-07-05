@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-data = pd.read_csv("C:/Users/82104/Downloads/전국관광지정보표준데이터.csv", encoding='cp949')  # 검색할 데이터 파일의 경로를 적절히 수정하세요.
+data = pd.read_csv("전국관광지정보표준데이터.csv", encoding='cp949')  # 검색할 데이터 파일의 경로를 적절히 수정하세요.
 
 def main():
     st.title("전국 관광지 정보 검색")
