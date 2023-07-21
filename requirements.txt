@@ -3,6 +3,7 @@ matplotlib
 pandas
 numpy
 openpyxl
+fsspec
 kiwipiepy
 konlpy
 wordcloud
