@@ -59,10 +59,12 @@ def main():
     date_from = st.text_input("검색시작일 입력(20230101 형태로):")
     date_to = st.text_input("검색마지막일 입력(20230101 형태로):")
     to_page = int(float(st.number_input("몇 페이지까지(100페이지까지 가능):", min_value=0, max_value=100, step=1)))
-
+    save_path = st.text_input("검색 결과 저장 경로(C:/Users/user/Desktop/result.xlsx 방식):")
     if st.button("뉴스 검색 시작"):
         result_file=naver_news_search(query, date_from, date_to, to_page)
-        st.write(result_file)
+        st.dataframe(result_file)
+        result_file.to_excel(save_path, index=False)
+        st.success("저장 성공: "+save_path+ " 확인")
 
 if __name__ == "__main__":
     main()
